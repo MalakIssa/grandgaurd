@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import caregiverwithelderperson from '../images/caregiverwithelderperson.jpg';
 import caregivertalketo from '../images/caregivertalketo.jpg';
-import dashboardPicture from '../images/dashboardPicture.png';
 import heart from '../images/heart.png';
 import handshake from '../images/handshake.png';
 import star from '../images/star.png';

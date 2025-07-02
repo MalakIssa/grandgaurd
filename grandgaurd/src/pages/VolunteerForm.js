@@ -114,15 +114,15 @@ const VolunteerForm = () => {
     if (hasErrors) {
       setErrorMessage('Please correct the wage errors before submitting.');
       setIsLoading(false);
-      return;
-    }
+        return;
+      }
 
     // Location validation
     if (!formData.address || !formData.lat || !formData.lng) {
       setErrorMessage('Please select your location on the map.');
       setIsLoading(false);
-      return;
-    }
+        return;
+      }
 
     // Step 1: Sign up the user
     const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -133,14 +133,14 @@ const VolunteerForm = () => {
     if (authError) {
       setErrorMessage(authError.message);
       setIsLoading(false);
-      return;
-    }
+        return;
+      }
 
     if (!authData.user) {
         setErrorMessage('Signup successful, but no user data returned. Please check your email to verify your account.');
         setIsLoading(false);
         return;
-    }
+      }
 
     // Build availability array with only selected shifts
     const availabilityArr = [];
@@ -181,23 +181,23 @@ const VolunteerForm = () => {
     if (insertError) {
       setErrorMessage(`Could not save profile: ${insertError.message}`);
       setIsLoading(false);
-      return;
-    }
+        return;
+      }
 
     setSuccessMessage('Registration successful! Please check your email to verify your account.');
-    setFormData({
+        setFormData({
       full_name: '',
-      email: '',
-      password: '',
-      phone: '',
+          email: '',
+          password: '',
+          phone: '',
       date_of_birth: '',
       gender: '',
       address: '',
       lat: null,
       lng: null,
       experience: '',
-      specialization: '',
-      description: '',
+          specialization: '',
+          description: '',
       availability: initialAvailability,
     });
     setAvailabilityErrors({}); // Clear errors on success
@@ -241,8 +241,8 @@ const VolunteerForm = () => {
     <>
       <Navbar />
       <div className="volunteer-form-page">
-        <div className="volunteer-form-container">
-          <div className="volunteer-form-content">
+      <div className="volunteer-form-container">
+        <div className="volunteer-form-content">
             <h1>Become a Caregiver</h1>
             <p className="form-subtitle">Join our team and make a difference in someone's life.</p>
             
@@ -250,48 +250,48 @@ const VolunteerForm = () => {
             {errorMessage && <div className="error-message">{errorMessage}</div>}
 
             <form onSubmit={handleSubmit}>
-              <div className="form-grid">
+                <div className="form-grid">
                 {/* Personal Information */}
-                <div className="form-group">
+                  <div className="form-group">
                   <label htmlFor="full_name">Full Name</label>
                   <input type="text" id="full_name" name="full_name" value={formData.full_name} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required placeholder="At least 6 characters" />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="phone">Phone Number</label>
                   <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="date_of_birth">Date of Birth</label>
                   <input type="date" id="date_of_birth" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="gender">Gender</label>
                   <select id="gender" name="gender" value={formData.gender} onChange={handleChange} required>
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="experience">Years of Experience</label>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="experience">Years of Experience</label>
                   <input type="number" id="experience" name="experience" value={formData.experience} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
+                  </div>
+                  <div className="form-group">
                   <label htmlFor="specialization">Specialization</label>
                   <select id="specialization" name="specialization" value={formData.specialization} onChange={handleChange} required>
                     <option value="">Select Specialization</option>
                     {specializations.map(spec => <option key={spec} value={spec}>{spec}</option>)}
                   </select>
                 </div>
-                
+
                 {/* Location Section (updated) */}
                 <div className="form-group full-width">
                   <label htmlFor="address">Address (select on map)</label>
@@ -313,13 +313,13 @@ const VolunteerForm = () => {
                   <label htmlFor="description">Brief Description (Experience, Skills, etc.)</label>
                   <textarea id="description" name="description" value={formData.description} onChange={handleChange} required />
                 </div>
-                
+
                 {/* Availability Section */}
                 <div className="form-group full-width">
-                  <div className="availability-section">
+                <div className="availability-section">
                     <div className="availability-section-title">Availability & Wage (per shift):</div>
                     <div className="availability-days-grid">
-                      {daysOfWeek.map(day => (
+                  {daysOfWeek.map(day => (
                         <div key={day} className="availability-day-card">
                           <div className="availability-day-title">
                             <input
@@ -368,7 +368,7 @@ const VolunteerForm = () => {
                                     className="modern-checkbox"
                                   />
                                   <label htmlFor={`${day}-${opt.key}`}>{opt.label}</label>
-                                  <input
+                            <input
                                     type="number"
                                     min="0"
                                     placeholder="Wage"
@@ -393,10 +393,10 @@ const VolunteerForm = () => {
                                   <span className="wage-hint">{opt.hint}</span>
                                 </span>
                               ))}
-                            </div>
-                          )}
                         </div>
-                      ))}
+                      )}
+                    </div>
+                  ))}
                     </div>
                   </div>
                 </div>
@@ -405,7 +405,7 @@ const VolunteerForm = () => {
                   {isLoading ? 'Submitting...' : 'Submit Application'}
                 </button>
               </div>
-            </form>
+              </form>
             {/* Map Modal */}
             {showMap && (
               <div className="map-modal-overlay">
@@ -422,7 +422,7 @@ const VolunteerForm = () => {
                   </MapContainer>
                   <div style={{ marginTop: 8, fontSize: 14, color: '#555' }}>Click on the map to select your location.</div>
                 </div>
-              </div>
+            </div>
             )}
           </div>
         </div>

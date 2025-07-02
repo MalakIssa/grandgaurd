@@ -39,7 +39,7 @@ const ProtectedRoute = ({ children }) => {
     };
 
     checkAuth();
-  }, []);
+  }, [navigate]);
 
   if (isLoading) {
     return <div className="loading">Loading...</div>;
