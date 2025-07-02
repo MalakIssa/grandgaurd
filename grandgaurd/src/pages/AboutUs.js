@@ -47,13 +47,6 @@ const AboutUs = () => {
     }
   ];
 
-  const stats = [
-    { number: "500+", label: "Seniors Cared For" },
-    { number: "100+", label: "Professional Caregivers" },
-    { number: "1+", label: "Years Experience" },
-    { number: "24/7", label: "Support Available" }
-  ];
-
   return (
     <>
       <Navbar />

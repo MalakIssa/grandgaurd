@@ -24,7 +24,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     checkAdminAuth();
     fetchDashboardData();
-  }, []);
+  }, [checkAdminAuth]);
 
   const checkAdminAuth = async () => {
     try {

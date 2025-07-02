@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import supabase from './supabaseClient';
 import './AdminTables.css';
 import AdminNavbar from '../components/Navbar/AdminNavbar';
 import AdminFooter from '../Footer/AdminFooter';
 
 const AdminClients = () => {
-  const navigate = useNavigate();
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
