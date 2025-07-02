@@ -1,0 +1,310 @@
+.volunteer-form-page {
+  background-color: #f4f7f9;
+  padding: 3rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.volunteer-form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.volunteer-form-content {
+  padding: 3rem;
+}
+
+.form-container h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0c5d67;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.form-subtitle {
+  text-align: center;
+  color: #5a677d;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 2.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0c5d67;
+  box-shadow: 0 0 0 3px rgba(12, 93, 103, 0.15);
+  background-color: #fff;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.availability-day {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.day-header {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.wage-input {
+  margin-top: 1rem;
+}
+
+.wage-input label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.wage-input .error-text {
+  color: #c81e1e;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.submit-button {
+  grid-column: 1 / -1;
+  background-color: #0c5d67;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: #084c54;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(12, 93, 103, 0.2);
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .volunteer-form-content {
+    padding: 2rem;
+  }
+}
+
+/* Modern Availability Section Styles */
+.availability-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.availability-days-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 1.2rem;
+  align-items: stretch;
+  padding-bottom: 0.5rem;
+}
+.availability-day-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem 1.2rem 1.2rem 1.2rem;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: box-shadow 0.2s;
+  border: 1.5px solid #e3e8ee;
+  flex: 1 1 0;
+}
+.availability-day-card:hover {
+  box-shadow: 0 4px 16px rgba(12,93,103,0.13);
+  border-color: #b2d6e6;
+}
+.availability-day-title {
+  font-weight: 700;
+  color: #0c5d67;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.08rem;
+  width: 100%;
+  border-bottom: 1px solid #f0f4f8;
+  padding-bottom: 0.3rem;
+}
+.availability-day-title .modern-checkbox {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+.availability-shift-row {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+.availability-shift-option {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: 0.25rem 0.7rem;
+  margin-bottom: 0;
+  min-width: 120px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1px solid #e3e8ee;
+}
+.modern-checkbox {
+  accent-color: #0c5d67;
+  width: 16px;
+  height: 16px;
+}
+.modern-wage-input {
+  width: 48px;
+  margin-left: 2px;
+  border-radius: 5px;
+  border: 1px solid #cfd8dc;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.95rem;
+  background: #f9f9fb;
+  transition: border 0.2s;
+}
+.modern-wage-input:focus {
+  border: 1.5px solid #0c5d67;
+  outline: none;
+}
+@media (max-width: 900px) {
+  .availability-days-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding-bottom: 0;
+  }
+}
+
+.map-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 1.5rem;
+  max-width: 520px;
+  width: 95vw;
+  position: relative;
+}
+
+.close-map-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: #0c5d67;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-map-btn:hover {
+  background: #084c54;
+}
+
+.select-location-btn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(255,152,0,0.10);
+  outline: none;
+}
+.select-location-btn:hover, .select-location-btn:focus {
+  background: #fb8c00;
+  box-shadow: 0 4px 16px rgba(255,152,0,0.18);
+  transform: translateY(-2px) scale(1.03);
+}

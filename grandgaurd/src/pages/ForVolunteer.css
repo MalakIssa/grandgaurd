@@ -1,0 +1,150 @@
+.volunteer-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.volunteer-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 60px auto 0; /* Add top margin to compensate for negative margin */
+  padding: 0 2rem;
+  flex: 1;
+}
+
+.volunteer-content {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* Info Section */
+.volunteer-info {
+  padding: 3rem;
+  background: linear-gradient(135deg, #0c5d67 0%, #094954 100%);
+  color: white;
+}
+
+.volunteer-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.volunteer-info .subtitle {
+  font-size: 1.5rem;
+  color: #ee9d3a;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.volunteer-info .description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.requirements, .benefits {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.requirements h3, .benefits h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #ee9d3a;
+}
+
+.requirements ul, .benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.requirements li, .benefits li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.requirements li::before, .benefits li::before {
+  content: "✓";
+  color: #ee9d3a;
+  font-weight: bold;
+}
+
+.apply-button {
+  background-color: #ee9d3a;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.apply-button:hover {
+  background-color: #d88b2a;
+  transform: translateY(-2px);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.apply-button:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .volunteer-container {
+    padding: 1rem;
+  }
+
+  .volunteer-info {
+    padding: 2rem;
+  }
+
+  .volunteer-info h1 {
+    font-size: 2rem;
+  }
+
+  .volunteer-info .subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.volunteer-content {
+  animation: fadeIn 0.6s ease-out;
+}
+
