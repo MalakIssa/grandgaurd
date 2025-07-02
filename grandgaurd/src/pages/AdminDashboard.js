@@ -22,82 +22,62 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    checkAdminAuth();
-    fetchDashboardData();
-  }, [checkAdminAuth]);
+    const checkAndFetch = async () => {
+      try {
+        // 1. Check admin authentication
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
+        if (userError || !user) {
+          console.error('Auth error:', userError);
+          throw new Error('Not authenticated');
+        }
+        const { data: adminData, error: adminError } = await supabase
+          .from('admin')
+          .select('name')
+          .eq('email', user.email)
+          .single();
+        if (adminError || !adminData) {
+          console.error('Error fetching admin:', adminError);
+          throw new Error('Admin not found');
+        }
+        setAdminName(adminData.name);
 
-  const checkAdminAuth = async () => {
-    try {
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
-      
-      if (userError || !user) {
-        console.error('Auth error:', userError);
-        throw new Error('Not authenticated');
+        // 2. Fetch dashboard data
+        // Fetch total clients count
+        const { count: clientsCount, error: clientsError } = await supabase
+          .from('clients')
+          .select('*', { count: 'exact' });
+        if (clientsError) throw clientsError;
+
+        // Fetch total volunteers count
+        const { count: volunteersCount, error: volunteersError } = await supabase
+          .from('volunteers')
+          .select('*', { count: 'exact' });
+        if (volunteersError) throw volunteersError;
+
+        // Fetch total elderly count
+        const { count: elderlyCount, error: elderlyError } = await supabase
+          .from('elderly')
+          .select('*', { count: 'exact' });
+        if (elderlyError) throw elderlyError;
+
+        setStats({
+          totalClients: clientsCount || 0,
+          totalVolunteers: volunteersCount || 0,
+          totalElderly: elderlyCount || 0
+        });
+
+      } catch (error) {
+        console.error('Authentication or data fetch failed:', error);
+        setError('Failed to load dashboard data');
+        await supabase.auth.signOut();
+        navigate('/admin/login');
+      } finally {
+        setLoading(false);
       }
+    };
 
-      // Fetch admin details
-      const { data: adminData, error: adminError } = await supabase
-        .from('admin')
-        .select('name')
-        .eq('email', user.email)
-        .single();
-
-      if (adminError || !adminData) {
-        console.error('Error fetching admin:', adminError);
-        throw new Error('Admin not found');
-      }
-
-      setAdminName(adminData.name);
-    } catch (error) {
-      console.error('Authentication check failed:', error);
-      await supabase.auth.signOut();
-      navigate('/admin/login');
-    }
-  };
-
-  const fetchDashboardData = async () => {
-    try {
-      setLoading(true);
-      
-      // Fetch total clients count
-      const { count: clientsCount, error: clientsError } = await supabase
-        .from('clients')
-        .select('*', { count: 'exact' });
-
-      if (clientsError) throw clientsError;
-
-      // Fetch total volunteers count
-      const { count: volunteersCount, error: volunteersError } = await supabase
-        .from('volunteers')
-        .select('*', { count: 'exact' });
-
-      if (volunteersError) throw volunteersError;
-
-      // Fetch total elderly count
-      const { count: elderlyCount, error: elderlyError } = await supabase
-        .from('elderly')
-        .select('*', { count: 'exact' });
-
-      if (elderlyError) throw elderlyError;
-
-      setStats({
-        totalClients: clientsCount || 0,
-        totalVolunteers: volunteersCount || 0,
-        totalElderly: elderlyCount || 0
-      });
-
-    } catch (error) {
-      console.error('Error fetching dashboard data:', error);
-      setError('Failed to load dashboard data');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate('/admin/login');
-  };
+    checkAndFetch();
+  }, [navigate, supabase]);
 
   if (loading) {
     return (

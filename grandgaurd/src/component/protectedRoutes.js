@@ -10,9 +10,22 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
+        // Check for session first
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          setIsAuthenticated(false);
+          setIsLoading(false);
+          navigate('/admin/login');
+          return;
+        }
+
+        // Now get the user
         const { data: { user } } = await supabase.auth.getUser();
-        
+        console.log('ProtectedRoute user:', user);
+
         if (!user) {
+          setIsAuthenticated(false);
+          setIsLoading(false);
           navigate('/admin/login');
           return;
         }
@@ -24,7 +37,11 @@ const ProtectedRoute = ({ children }) => {
           .eq('email', user.email)
           .single();
 
+        console.log('ProtectedRoute adminData:', adminData);
+
         if (!adminData) {
+          setIsAuthenticated(false);
+          setIsLoading(false);
           navigate('/admin/login');
           return;
         }
@@ -32,6 +49,7 @@ const ProtectedRoute = ({ children }) => {
         setIsAuthenticated(true);
       } catch (error) {
         console.error('Auth check error:', error);
+        setIsAuthenticated(false);
         navigate('/admin/login');
       } finally {
         setIsLoading(false);

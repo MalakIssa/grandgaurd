@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import supabase from './supabaseClient'; // Import supabase directly
 import './AdminLogin.css';
@@ -11,18 +11,6 @@ const AdminLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const signOutIfLoggedIn = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        await supabase.auth.signOut();
-        // Optionally, reload to clear all state
-        window.location.reload(); 
-      }
-    };
-    signOutIfLoggedIn();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

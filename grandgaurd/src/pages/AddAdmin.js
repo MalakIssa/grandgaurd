@@ -6,7 +6,7 @@ import './AddAdmin.css';
 import AdminNavbar from '../components/Navbar/AdminNavbar';
 import AdminFooter from '../Footer/AdminFooter';
 
-const AddAdmin = () => {
+ const AddAdmin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -41,7 +41,8 @@ const AddAdmin = () => {
       if (authError) throw authError;
 
       // Then insert admin details into the admin table
-      const { data: adminData, error: adminError } = await supabase
+      const { //data: adminData,
+         error: adminError } = await supabase
         .from('admin')
         .insert([{
           admin_id: authData.user.id,
