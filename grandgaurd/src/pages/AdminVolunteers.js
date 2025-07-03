@@ -163,7 +163,8 @@ const AdminVolunteers = () => {
       const start_time = `${interviewDate}T${interviewTime}:00`;
 
       console.log('adminId being sent:', adminId);
-      const response = await fetch('http://localhost:5000/api/schedule-zoom-meeting', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/schedule-zoom-meeting`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
