@@ -201,6 +201,7 @@ const AdminVolunteers = () => {
 
         {error && <div className="error-message">{error}</div>}
 
+        {/* Volunteer Table */}
         <div className="table-container">
           <table className="admin-table">
             <thead>

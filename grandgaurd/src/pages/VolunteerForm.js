@@ -355,8 +355,8 @@ const VolunteerForm = () => {
                 <div className="form-group full-width">
                   <label htmlFor="description">Brief Description (Experience, Skills, etc.)</label>
                   <textarea id="description" name="description" value={formData.description} onChange={handleChange} required />
-                </div>
-
+                      </div>
+                      
                 {/* Availability Section */}
                 <div className="form-group full-width">
                   <div className="availability-section-modern">
@@ -408,7 +408,7 @@ const VolunteerForm = () => {
                                     {opt.label} Shift
                                   </label>
                                   {formData.availability[day][opt.key].selected && (
-                                    <input
+                            <input
                                       type="number"
                                       min="0"
                                       placeholder={`Wage (${opt.hint})`}
@@ -431,12 +431,12 @@ const VolunteerForm = () => {
                                       required
                                     />
                                   )}
-                                </div>
+                          </div>
                               ))}
-                            </div>
-                          )}
                         </div>
-                      ))}
+                      )}
+                    </div>
+                  ))}
                     </div>
                   </div>
                 </div>
