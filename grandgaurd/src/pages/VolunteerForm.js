@@ -322,6 +322,7 @@ const VolunteerForm = () => {
                   {daysOfWeek.map(day => (
                         <div key={day} className="availability-day-card">
                           <div className="availability-day-title">
+                            <label htmlFor={`${day}-selected`}>{day}</label>
                             <input
                               type="checkbox"
                               checked={formData.availability[day].selected}
@@ -338,7 +339,6 @@ const VolunteerForm = () => {
                               id={`${day}-selected`}
                               className="modern-checkbox"
                             />
-                            <label htmlFor={`${day}-selected`} style={{marginLeft: 6}}>{day}</label>
                           </div>
                           {formData.availability[day].selected && (
                             <div className="availability-shift-row">

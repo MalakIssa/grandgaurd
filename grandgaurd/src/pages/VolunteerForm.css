@@ -198,12 +198,16 @@
   align-items: center;
   font-size: 1.08rem;
   width: 100%;
-  border-bottom: 1px solid #f0f4f8;
-  padding-bottom: 0.3rem;
+  justify-content: space-between;
+}
+.availability-day-title label {
+  flex: 1;
+  text-align: left;
 }
 .availability-day-title .modern-checkbox {
-  margin-right: 0.5rem;
-  transform: scale(1.2);
+  flex: 0 0 auto;
+  margin: 0 auto;
+  display: block;
 }
 .availability-shift-row {
   display: flex;
@@ -247,8 +251,24 @@
 @media (max-width: 900px) {
   .availability-days-grid {
     grid-template-columns: 1fr;
-    gap: 0.7rem;
-    padding-bottom: 0;
+    gap: 1rem;
+  }
+  .availability-day-card {
+    min-width: 0;
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .volunteer-form-content {
+    padding: 1rem;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .availability-section-title {
+    font-size: 1rem;
   }
 }
 

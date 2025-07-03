@@ -90,7 +90,7 @@ const Home = () => {
                 maintain their independence and quality of life in the comfort of their own homes.
               </p>
               <div className="hero-buttons">
-                <Link to="/contact" className="primary-button">
+                <Link to="/volunteer" className="primary-button">
                   Get Started
                   <span className="arrow">→</span>
                 </Link>
