@@ -55,6 +55,7 @@ const VolunteerForm = () => {
   const [showMap, setShowMap] = useState(false);
   const [mapError, setMapError] = useState('');
   const mapRef = useRef();
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (showMap && mapRef.current) {
@@ -63,6 +64,18 @@ const VolunteerForm = () => {
       }, 200);
     }
   }, [showMap]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const btn = document.querySelector('.show-password-toggle');
+      if (btn) {
+        btn.style.display = window.innerWidth <= 900 ? 'block' : 'none';
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -262,7 +275,37 @@ const VolunteerForm = () => {
                   </div>
                   <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required placeholder="At least 6 characters" />
+                  <div style={{ position: 'relative' }}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                      placeholder="At least 8 characters"
+                      minLength={8}
+                      style={{ paddingRight: '2.5rem' }}
+                    />
+                    <button
+                      type="button"
+                      className="show-password-toggle"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      style={{
+                        position: 'absolute',
+                        right: '0.5rem',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'none',
+                      }}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                    </div>
                   </div>
                   <div className="form-group">
                   <label htmlFor="phone">Phone Number</label>
