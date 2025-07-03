@@ -16,6 +16,7 @@ import Retrieve from './pages/Retrieve';
 import ProtectedRoute from './component/protectedRoutes';
 import AdminInterviews from './pages/AdminInterviews';
 import './App.css';
+import ScrollToTop from './ScrollToTop';
 
 function AppContent() {
   return (
@@ -46,6 +47,7 @@ function AppContent() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AppContent />
     </Router>
   );

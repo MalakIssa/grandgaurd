@@ -328,3 +328,77 @@
   box-shadow: 0 4px 16px rgba(255,152,0,0.18);
   transform: translateY(-2px) scale(1.03);
 }
+
+/* Modern, Simple Availability Section */
+.availability-section-modern {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.availability-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.availability-day-modern {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(12,93,103,0.06);
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid #e3e8ee;
+}
+.day-label {
+  font-weight: 600;
+  color: #0c5d67;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.shifts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-left: 1.5rem;
+}
+.shift-row-modern {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f5f7fa;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+}
+.shift-label {
+  font-weight: 500;
+  color: #0c5d67;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+@media (max-width: 900px) {
+  .availability-section-modern {
+    padding: 1rem 0.5rem;
+  }
+  .availability-day-modern {
+    padding: 0.7rem 0.5rem;
+  }
+  .shifts-list {
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-left: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .availability-section-modern {
+    padding: 0.5rem 0.2rem;
+  }
+  .availability-day-modern {
+    padding: 0.5rem 0.2rem;
+  }
+}

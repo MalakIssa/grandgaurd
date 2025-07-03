@@ -85,12 +85,16 @@
 }
 
 .service-card {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  border: 2px solid transparent;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1rem;
+  border: 1px solid #e3e8ee;
 }
 
 .service-card:hover {
@@ -123,6 +127,13 @@
   height: 36px;
   object-fit: contain;
   display: block;
+}
+
+.service-header h3,
+.service-header p,
+.service-details ul,
+.service-details li {
+  text-align: left;
 }
 
 .service-header h3 {
@@ -202,7 +213,7 @@
   background: white;
   padding: 2rem;
   border-radius: 15px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 2px solid transparent;
@@ -400,5 +411,11 @@
 
   .service-details {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .service-card {
+    padding: 1rem 0.5rem;
   }
 }

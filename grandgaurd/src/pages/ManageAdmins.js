@@ -120,7 +120,7 @@ const ManageAdmins = () => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <div className="admins-table-container">
+        <div className="table-container">
           {admins.length === 0 ? (
             <div className="no-data-message">No administrators found</div>
           ) : (

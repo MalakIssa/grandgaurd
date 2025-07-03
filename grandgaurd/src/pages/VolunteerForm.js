@@ -359,13 +359,12 @@ const VolunteerForm = () => {
 
                 {/* Availability Section */}
                 <div className="form-group full-width">
-                <div className="availability-section">
+                  <div className="availability-section-modern">
                     <div className="availability-section-title">Availability & Wage (per shift):</div>
-                    <div className="availability-days-grid">
-                  {daysOfWeek.map(day => (
-                        <div key={day} className="availability-day-card">
-                          <div className="availability-day-title">
-                            <label htmlFor={`${day}-selected`}>{day}</label>
+                    <div className="availability-days-list">
+                      {daysOfWeek.map(day => (
+                        <div key={day} className="availability-day-modern">
+                          <label className="day-label">
                             <input
                               type="checkbox"
                               checked={formData.availability[day].selected}
@@ -379,67 +378,65 @@ const VolunteerForm = () => {
                                   }
                                 }
                               }))}
-                              id={`${day}-selected`}
                               className="modern-checkbox"
                             />
-                          </div>
+                            {day}
+                          </label>
                           {formData.availability[day].selected && (
-                            <div className="availability-shift-row">
-                              {[{
-                                label: 'Day Shift (7 AM - 7 PM)', key: 'day', hint: '($30 - $50)' },
-                                { label: 'Night Shift (7 PM - 7 AM)', key: 'night', hint: '($50 - $70)' },
-                                { label: 'Full (7 AM to 7 AM)', key: 'full', hint: '($70 - $100)' }
-                              ].map(opt => (
-                                <span key={opt.key} className="availability-shift-option">
-                                  <input
-                                    type="checkbox"
-                                    checked={formData.availability[day][opt.key].selected}
-                                    onChange={e => setFormData(prev => ({
-                                      ...prev,
-                                      availability: {
-                                        ...prev.availability,
-                                        [day]: {
-                                          ...prev.availability[day],
-                                          [opt.key]: {
-                                            ...prev.availability[day][opt.key],
-                                            selected: e.target.checked
+                            <div className="shifts-list">
+                              {[{ label: 'Day', key: 'day', hint: '$30-50' }, { label: 'Night', key: 'night', hint: '$50-70' }, { label: 'Full', key: 'full', hint: '$70-100' }].map(opt => (
+                                <div key={opt.key} className="shift-row-modern">
+                                  <label className="shift-label">
+                                    <input
+                                      type="checkbox"
+                                      checked={formData.availability[day][opt.key].selected}
+                                      onChange={e => setFormData(prev => ({
+                                        ...prev,
+                                        availability: {
+                                          ...prev.availability,
+                                          [day]: {
+                                            ...prev.availability[day],
+                                            [opt.key]: {
+                                              ...prev.availability[day][opt.key],
+                                              selected: e.target.checked
+                                            }
                                           }
                                         }
-                                      }
-                                    }))}
-                                    id={`${day}-${opt.key}`}
-                                    className="modern-checkbox"
-                                  />
-                                  <label htmlFor={`${day}-${opt.key}`}>{opt.label}</label>
-                            <input
-                                    type="number"
-                                    min="0"
-                                    placeholder="Wage"
-                                    value={formData.availability[day][opt.key].wage}
-                                    onChange={e => setFormData(prev => ({
-                                      ...prev,
-                                      availability: {
-                                        ...prev.availability,
-                                        [day]: {
-                                          ...prev.availability[day],
-                                          [opt.key]: {
-                                            ...prev.availability[day][opt.key],
-                                            wage: e.target.value
+                                      }))}
+                                      className="modern-checkbox"
+                                    />
+                                    {opt.label} Shift
+                                  </label>
+                                  {formData.availability[day][opt.key].selected && (
+                                    <input
+                                      type="number"
+                                      min="0"
+                                      placeholder={`Wage (${opt.hint})`}
+                                      value={formData.availability[day][opt.key].wage}
+                                      onChange={e => setFormData(prev => ({
+                                        ...prev,
+                                        availability: {
+                                          ...prev.availability,
+                                          [day]: {
+                                            ...prev.availability[day],
+                                            [opt.key]: {
+                                              ...prev.availability[day][opt.key],
+                                              wage: e.target.value
+                                            }
                                           }
                                         }
-                                      }
-                                    }))}
-                                    disabled={!formData.availability[day][opt.key].selected}
-                                    required={formData.availability[day][opt.key].selected}
-                                    className="modern-wage-input"
-                                  />
-                                  <span className="wage-hint">{opt.hint}</span>
-                                </span>
+                                      }))}
+                                      className="modern-wage-input"
+                                      style={{ maxWidth: 100, marginLeft: 8 }}
+                                      required
+                                    />
+                                  )}
+                                </div>
                               ))}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  ))}
+                      ))}
                     </div>
                   </div>
                 </div>

@@ -145,7 +145,7 @@ const Reports = () => {
           <div className="report-section wide">
             <h3>Recent Messages</h3>
             <div className="table-container">
-              <table>
+              <table className="admin-table">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -172,7 +172,7 @@ const Reports = () => {
           <div className="report-section wide">
             <h3>Recent Caregivers</h3>
             <div className="table-container">
-              <table>
+              <table className="admin-table">
                 <thead>
                   <tr>
                     <th>Name</th>

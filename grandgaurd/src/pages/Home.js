@@ -163,10 +163,10 @@ const Home = () => {
                 your loved ones live their best life.
               </p>
               <div className="cta-buttons">
-                <Link to="/contact" className="primary-button">
+                <Link to="/contact" className="primary-button" onClick={() => window.scrollTo(0,0)}>
                   Contact Us
                 </Link>
-                <Link to="/volunteer" className="secondary-button">
+                <Link to="/volunteer" className="secondary-button" onClick={() => window.scrollTo(0,0)}>
                   Join Our Team
                 </Link>
               </div>
