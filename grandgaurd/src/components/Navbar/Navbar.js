@@ -32,9 +32,6 @@ const Navbar = () => {
         </ul>
       </div>
       
-      <div className="nav-button-container">
-        <Link to="/admin/login" className="book-button">Admin Portal</Link>
-      </div>
     </nav>
   );
 };
