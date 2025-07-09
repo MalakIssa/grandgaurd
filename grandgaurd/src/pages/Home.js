@@ -182,7 +182,7 @@ const Home = () => {
               <p>Real stories from families we've helped</p>
             </div>
             <div className="testimonials-grid">
-              {reviews.length > 0 ? reviews.map((review, index) => (
+              {reviews.length > 0 ? reviews.slice(0, 2).map((review, index) => (
                 <div key={index} className="testimonial-card">
                   <div className="testimonial-content">
                     <p>"{review.review_text}"</p>
